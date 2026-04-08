@@ -1,0 +1,5 @@
+print("Trabajando con tuplas \n=======")
+tupla = ("Armando casas",True,1.73)
+print(tupla)
+print(type(tupla))
+print(f"{tupla[0]}\n")
