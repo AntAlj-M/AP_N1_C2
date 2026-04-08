@@ -23,11 +23,29 @@ print(lista[2])
 print(F"{lista}\n")
 
 print("Trabajando con diccionarios \n=======")
-diccionario = [
-    "nombre_personal" , "armando casas"
-    "esta emocionado" , True
+diccionario = {
+    "nombre_personal" : "armando casas",
+    "esta emocionado" : True,
     "Altura" : 1.73
-]
+}
+
 print(type(diccionario))
 print(diccionario)
 print(diccionario["nombre_personal"])
+
+diccionario["nombre_personal"] = nombre #cambio en el valor
+print(diccionario["nombre_personal"])
+
+print("Trabajando con conjuntos\n============")
+conjunto = {"Armando casas", True, 1.73}
+print(type(conjunto))
+
+conjunto.add(nombre)
+conjunto.add(nombre) #No se puede repetir un valor ya agregado,asi que no se agrega nuevamente
+print(f"{conjunto}")
+
+print("Trabajando con tuplas \n=======")
+tupla = ("Armando casas",True,1.73)
+print(tupla)
+print(type(tupla))
+print(f"{tupla[0]}\n")
