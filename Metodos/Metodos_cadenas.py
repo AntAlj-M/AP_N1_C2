@@ -41,4 +41,8 @@ print(titulo_personal_split[0])
 rut_split = rut_cpersonal.split('-')
 print(rut_split)
 print(f"Rut : {rut_split[0]}")
+print(f'Digito Verificador: {rut_split[1]}')
 #....
+
+
+# REPLACE permite reemplazar substring dentro de una cadena de texto
