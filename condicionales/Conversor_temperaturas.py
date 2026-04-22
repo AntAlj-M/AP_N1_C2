@@ -28,9 +28,6 @@
 #else:
 #    print("Ingrese un número de 1 al 3")
 
-
-
-
 print('Sistema conversor de temperaturas')
 print('=================================')
 print('Para comenzar ingrese su escala ')
