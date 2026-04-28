@@ -24,7 +24,13 @@ def div(num_1,num_2):
          print(resultado)
       
 
-suma(5,9)
+num_1 = input('Ingrese el primer número: ')
+num_2 = input('Ingrese el segundo número: ')
+
+if num_1.isdigit() and num_2.isdigit():
+    num_1 = float (num_1)
+    num_2 = float (num_2)
+suma(num_1,num_2)
 resta(12,8)
 mult(4,9)
 div(10,2)
