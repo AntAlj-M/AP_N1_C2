@@ -1,13 +1,30 @@
 import math
-from crear_funciones import convertir_float
+#from crear_funciones import convertir_float
 
 #1===================================================================================================================
 #   Escribe una función que calcule el total de una factura tras aplicarle el IVA.
 #       La función debe recibir la cantidad sin IVA y el porcentaje de IVA a aplicar.
 #       Si la función no recibe el porcentaje de IVA,deberá aplicar por defecto un 10%
 
+def pedir_datos_facturas():
+    monto = input('Ingrese el monto: ')
+    porcentaje = input('Ingrese el porcentaje de IVA: ')
+    monto = convertir_float(monto)
+    porcentaje = convertir_float(porcentaje)
+    factura(monto,porcentaje)
 
+def convertir_float(valor):
+    try:
+        return float(valor)
+    except(ValueError, TypeError):
+        return False
 
+def factura (monto,porcentaje):
+    total = monto + (monto * (porcentaje/100))
+    print(total)
+    return total
+
+pedir_datos_facturas()
 
 
 
@@ -23,24 +40,24 @@ from crear_funciones import convertir_float
 #a * altura
 
 
-def area_circunferencia(radio):
-    pi = math.pi
-    resultado = pi * radio * radio
-    return resultado
+# def area_circunferencia(radio):
+#     pi = math.pi
+#     resultado = pi * radio * radio
+#     return resultado
 
-def volumen_cilindro(radio,altura):
-    area = area_circunferencia(radio)
-    resultado = area * altura
-    return resultado
+# def volumen_cilindro(radio,altura):
+#     area = area_circunferencia(radio)
+#     resultado = area * altura
+#     return resultado
 
-def calculo_volumen_cilindro():
-    print("Ingrese los datos solicitados")
-    str_radio = input('Radio: ')
-    str_altura = input('altura: ')
-    radio = convertir_float(str_radio)
-    altura = convertir_float(str_altura)
-    volumen = volumen_cilindro(radio,altura)
-    print(volumen)
+# def calculo_volumen_cilindro():
+#     print("Ingrese los datos solicitados")
+#     str_radio = input('Radio: ')
+#     str_altura = input('altura: ')
+#     radio = convertir_float(str_radio)
+#     altura = convertir_float(str_altura)
+#     volumen = volumen_cilindro(radio,altura)
+#     print(volumen)
 
 
 #3====================================================================================================================

@@ -1,56 +1,62 @@
-# Dentro del lenguaje,tenemos la opción de crear nuestras PROPIAS funciones
+# Dentro del lenguaje, tenemos la opción de crear nuestras PROPIAS funciones
 # para eso usamos la palabra reservada DEF
 
-def suma(num_1,num_2):
-    #Este sera el contenido de la función
-    resultado = num_1 + num_2
+# DEF es acrínimo de DEFINIR, porque estamos definiendo una FUNCIÓN
+# Luego de DEF ponemos el NOMBRE de la función
+# Luego del NOMBRE de la FUNCIÓN ponemos sus ARGUMENTOS
+# Los ARGUMENTOS serán los insumos que usará la función para hacer su trabajo
+
+def suma(a,b):
+    # Este será el contenido de la función
+    resultado = a + b
+    # Usamos la palabra reservada RETURN para RETORNAR o DEVOLVER el resultado de nuestra FUNCIÓN
     return resultado
 
-def resta(num_1,num_2):
-    resultado = num_1 - num_2
+def resta(a,b):
+    resultado = a - b
     return resultado
 
-def mult(num_1,num_2):
-    resultado = num_1 * num_2
+def multiplicacion(a,b):
+    resultado = a * b
     return resultado
 
-def div(num_1,num_2):
-     if num_2 == 0:
-         print("No se puede dividir en 0")
-     else:
-         resultado = num_1 / num_2
-         return resultado
+def division(a,b):
+    if b != 0:
+        resultado = a / b
+        return resultado
+    else:
+        print('No es posible dividir por 0!')
 
 def pedir_datos():
-    num_1 = input('Ingrese el primer número: ')
-    num_2 = input('Ingrese el segundo número: ')
-       
-    num_1 = convertir_float(num_1)
-    num_2 = convertir_float(num_2)
-    
-    if num_1 and num_2 != False:
+    str_numero_1 = input('Ingrese primer número: ')
+    str_numero_2 = input('Inrese segundo número: ')
+
+    # Cuando utilizamos (llamamos) a una función que tiene un RETURN, necesitamos recibir ese valor en una variable
+    num_1 = convertir_float(str_numero_1)
+    num_2 = convertir_float(str_numero_2)
+
+    if num_1 and num_2 != None:
         return(num_1,num_2)
     else:
-        print("Ingrese un número valido")
-    return(num_1,num_2)
+        return(None,None)
 
 def convertir_float(valor):
     try:
         return float(valor)
-    except(ValueError, TypeError):
-        return False
+    except (ValueError, TypeError):
+        return None
 
-print()
-print('Bienvenido a mi segunda calculadora')
-print('======================================')
+titulo = 'Bienvenido a CALCULADORA'
+print('\n' + titulo)
+print('=' * len(titulo))
 ciclo = True
 
 while ciclo == True:
-    print('\n[1] suma')
-    print('[2] resta')
-    print('[3] multiplicación')
-    print('[4] división')
-    print('[0] salir')
+    print('\n[1] Suma')
+    print('[2] Resta')
+    print('[3] Multiplicación')
+    print('[4] División')
+    print('[0] Salir')
     opcion = input('\nSeleccione su operación [0-4]: ')
 
     opciones_validas = ['0','1','2','3','4']
@@ -63,7 +69,8 @@ while ciclo == True:
         else:
             a,b = pedir_datos()
             operacion = ''
-            if a and b != False:
+
+            if a and b != None:
                 if opcion == '1':
                     operacion = '+'
                     valor = suma(a,b)
@@ -72,12 +79,12 @@ while ciclo == True:
                     valor = resta(a,b)
                 elif opcion == '3':
                     operacion = 'x'
-                    valor = mult(a,b)
+                    valor = multiplicacion(a,b)
                 elif opcion == '4':
                     operacion = '/'
-                    valor = div(a,b)
+                    valor = division(a,b)
                 print(f'{a} {operacion} {b} = {valor}')
             else:
-                print('Valor no corresponde')
+                print('Valor NO corresponde a un número!')
     else:
         print('Opción NO válida.')
