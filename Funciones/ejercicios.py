@@ -6,25 +6,31 @@ import math
 #       La función debe recibir la cantidad sin IVA y el porcentaje de IVA a aplicar.
 #       Si la función no recibe el porcentaje de IVA,deberá aplicar por defecto un 10%
 
-def pedir_datos_facturas():
-    monto = input('Ingrese el monto: ')
-    porcentaje = input('Ingrese el porcentaje de IVA,o dejar en blanco para usar el IVA por defecto (10%) ')
-    if porcentaje == False:
-        porcentaje = 10
-    monto = convertir_float(monto)
-    porcentaje = convertir_float(porcentaje)
+def pedir_datos_factura():
+    ciclo = True
+    while ciclo == True:
+        str_monto = input('Ingrese el monto de la factura: ')
+        monto = convertir_float(str_monto)
+        if monto != None:
+            ciclo = False
+    str_procentaje = input('Ingrese el pordentaje de IVA\n(o deje en blanco para aplicar 19%): ')
+    if str_procentaje == '':
+        str_procentaje = '19'
+    monto = convertir_float(str_monto)
+    porcentaje = convertir_float(str_procentaje)
     factura(monto,porcentaje)
 
-def convertir_float(valor):
-    try:
-        return float(valor)
-    except(ValueError, TypeError):
-        return False
-
-def factura (monto,porcentaje):
-    total = monto + (monto * (porcentaje/100))
-    print(f'\nLa factura con monto de {monto} y con IVA de {porcentaje} tiene un total de {total}\n')
-    return total
+def factura(monto,porcentaje):
+    if monto and porcentaje != None:
+        monto_iva = monto * (porcentaje/100)
+        total = monto + monto_iva
+        print()
+        print(f'Monto Factura: ${round(monto)}')
+        print(f'Monto IVA: ${round(monto_iva)}')
+        print(f'% IVA aplicado: {round(porcentaje)}')
+        print(f'Total Factura: ${round(total)}')
+    else:
+        print('valores ingresados NO corresponden.')
 #2==================================================================================================================
 #   Escriba una función que calcule el área de un circulo y otra que calcule
 #       El volumen de un cilindro usando la primera función de área.
@@ -41,8 +47,8 @@ def volumen_cilindro(radio,altura):
 
 def calculo_volumen_cilindro():
     print("Ingrese los datos solicitados")
-    str_radio = input('Radio: ')
-    str_altura = input('altura: ')
+    str_radio = input('Ingrese radio: ')
+    str_altura = input('Ingrese altura: ')
     radio = convertir_float(str_radio)
     altura = convertir_float(str_altura)
     volumen = volumen_cilindro(radio,altura)
@@ -53,14 +59,32 @@ def calculo_volumen_cilindro():
 #   Escriba una función que permita escribir la tabla de multilpicar de un numero ingresado por el usuario.
 
 def tabla():
-    numero = input('Ingrese un número: ')
-    numero = float(numero)
+    str_numero = input('Ingrese un número: ')
+    numero = convertir_float(str_numero)
     factor = 1
-    while factor <= 12:
-        total = numero * factor
-        print(f'\nEl número {numero} multiplicado por el factor {factor} da un total de {total}\n')
-        factor = factor + 1
+    if numero != None:
+        while factor <= 12:
+            total = numero * factor
+            print(f'{numero} x {factor} = {total}')
+            factor += 1
 #4=====================================================================================================================
+
+def convertir_float(valor):
+    try:
+        return float(valor)
+    except ValueError:
+        print('El valor ingresado NO se puede convertir a número.')
+    except Exception as error:
+        print(f'Se ha producido el siguiente error: {error}')
+        print(f'Tipo de error: {type(error)}')
+        print(f'Argumentos del error: {error.args}')
+        return None
+
+
+
+
+
+#5=====================================================================================================================
 
 while True:
     print('[1] Cálculo IVA')
@@ -68,13 +92,13 @@ while True:
     print('[3] Tabla de Multiplicar')
     print('[0] Salir')
 
-    opcion = input('Ingrese su Opción [0-3]')
+    opcion = input('\nIngrese su Opción [0-3]\n')
     opcion = float(opcion)
     valores_opcion = range(4)
 
     if opcion in valores_opcion:
         if opcion == 1:
-            pedir_datos_facturas()
+            pedir_datos_factura()
         elif opcion == 2:
             calculo_volumen_cilindro()
         elif opcion == 3:
