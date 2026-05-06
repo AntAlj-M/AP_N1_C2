@@ -25,21 +25,9 @@ def factura (monto,porcentaje):
     total = monto + (monto * (porcentaje/100))
     print(f'\nLa factura con monto de {monto} y con IVA de {porcentaje} tiene un total de {total}\n')
     return total
-
-
-
-
-
-
-
-
 #2==================================================================================================================
 #   Escriba una función que calcule el área de un circulo y otra que calcule
 #       El volumen de un cilindro usando la primera función de área.
-
-#a = pi x r^2
-#a * altura
-
 
 def area_circunferencia(radio):
     pi = math.pi
@@ -72,23 +60,7 @@ def tabla():
         total = numero * factor
         print(f'\nEl número {numero} multiplicado por el factor {factor} da un total de {total}\n')
         factor = factor + 1
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#4=====================================================================================================================
 
 while True:
     print('[1] Cálculo IVA')
