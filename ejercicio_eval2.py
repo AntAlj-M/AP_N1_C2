@@ -3,28 +3,39 @@
 
 # 1.- Escriba una función que al ser llamada imprima el saludo "Buen día!"
 
-def saludos():
-    print('Buen dia')
+def saludo_cordial():
+    saludo = '!Buen día!'
+    return saludo
 
 # 2.- Escriba una función que solicite al usuario ingresar su nombre
 # en una variable nombre_usuario
 # y al ser llamada imprima el saludo "Buen día 'nombre_usuario'!"
 
-def nombre():
+def saludo_personal():
+    saludo = saludo_cordial()
+    saludo_mod = saludo.split('!')
+    saludo_mod_2 = saludo.replace('!',' ')
+    nombre_usuario = solicitar_nombre_usuario()
+    saludo_1_split = saludo_mod[0] + ' ' + nombre_usuario + '!'
+    saludo_2_split = f'{saludo_mod[0]} {nombre_usuario}!'
+    saludo_1_replace = saludo_mod_2 + nombre_usuario + '!'
+    saludo_2_replace = f'{saludo_mod_2}{nombre_usuario}!'
+    print(saludo_1_split + '\n' + saludo_2_split + '\n' + saludo_1_replace + '\n' + saludo_2_replace)
+
+def solicitar_nombre_usuario():
     nombre_usuario = input('Ingrese su nombre: ')
-    print(f'Buen día {nombre_usuario} !')
+    return nombre_usuario.title()
 
 # 3.- Escribir una función que pida al usuario un número entero menor a 10
 # y al ser llamada entregue el factorial de ese número
 
-def numero():
+def numero_factorial():
     ciclo = True
     while ciclo == True:
         str_numero = input('Ingrese un numero menor a 10: ')
         try:
             num = int(str_numero)
         except ValueError:
-            
             num = None
 
         if num == None:
@@ -35,8 +46,8 @@ def numero():
                 factorial = 1
                 for numero in rango:
                     factorial *= numero
-                    print(factorial )
-                    ciclo = False
+                print(factorial)
+                ciclo = False
             elif num >= 10:
                 print('Ingrese un número valido')
             
@@ -56,11 +67,12 @@ def menu_principal():
 
         if opcion in valores_opcion:
             if opcion == '1':
-                saludos()
+                saludo = saludo_cordial()
+                print(saludo)
             elif opcion == '2':
-                nombre()
+                saludo_personal()
             elif opcion == '3':
-                numero()
+                numero_factorial()
             elif opcion == '0':
                 print('Saliendo del sistema...')
                 break
@@ -68,3 +80,4 @@ def menu_principal():
             print('Opción ingresada NO corresponde...')
 
 menu_principal()
+
