@@ -21,11 +21,25 @@ def numero():
     ciclo = True
     while ciclo == True:
         str_numero = input('Ingrese un numero menor a 10: ')
-        num = int(str_numero)
-        if num < 10:
-            rango = range(1,num + 1) 
-            for numero in rango:
-                print(numero )
+        try:
+            num = int(str_numero)
+        except ValueError:
+            
+            num = None
+
+        if num == None:
+            print('Valor no corresponde a un número')
+        else:
+            if num < 10:
+                rango = range(1,num + 1) 
+                factorial = 1
+                for numero in rango:
+                    factorial *= numero
+                    print(factorial )
+                    ciclo = False
+            elif num >= 10:
+                print('Ingrese un número valido')
+            
             
 
 
