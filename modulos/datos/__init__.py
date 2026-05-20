@@ -1,2 +1,2 @@
-from datos.versión import version
-from datos.datos_menu import datos_menu
+from datos.versión import numero_version
+from datos.datos_menu import datos_menu,opciones_validas,datos_sub_menu,mensaje_volver
