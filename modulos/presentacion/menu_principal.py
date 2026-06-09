@@ -1,15 +1,16 @@
-from datos import datos_menu,opciones_validas_menu,datos_sub_menu,mensaje_volver,opciones_validas_sub_menu,mensaje_opcion_incorrecta
+from datos import datos_menu,opciones_validas_menu,datos_sub_menu,mensaje_volver,opciones_validas_sub_menu,mensaje_opcion_incorrecta,titulo_app
 from datos import numero_version
 from presentacion.control_libro import agregar_libro,listar_libros,modificar_libro,eliminar_libro
 
-titulo = 'Sistema Gestión Biblioteca'
-
 def menu_principal():
-    print(f'\n{titulo} v{numero_version}')
-    print(f'{'=' * len(titulo)}=={'=' * len(numero_version)}')
+    print(f'\n{titulo_app} v{numero_version}')
+    print(f'{'=' * len(titulo_app)}=={'=' * len(numero_version)}')
 
     while True:
+        titulo = 'Menú Principal'
         print()
+        print(titulo)
+        print('=' * len(titulo))
         for clave, valor in datos_menu.items():
             print(f'[{clave}] {valor}')
         opcion_usuario = seleccionar_opcion(datos_menu)
@@ -52,6 +53,7 @@ def menu_principal():
         elif opcion_usuario == '3':
             # Gestión Lectores
             while True:
+                opcion_sub_menu = sub_menu('Lector')
                 if opcion_sub_menu == '1':
                     pass
                 elif opcion_sub_menu == '2':
@@ -124,7 +126,7 @@ def menu_principal():
 
 def seleccionar_opcion(menu):
     while True:
-        opcion = input(f'Seleccione su opción [0-{len(menu) - 1}]:')
+        opcion = input(f'Seleccione su opción [0-{len(menu) - 1}]: ')
         if len(menu) <= 5:
             opciones = opciones_validas_sub_menu
         else:
@@ -133,7 +135,10 @@ def seleccionar_opcion(menu):
             return opcion
 
 def sub_menu(tipo_dato):
+    titulo = f'Submenú {tipo_dato}'
     print()
+    print(titulo)
+    print('=' * len(titulo))
     for clave, valor in datos_sub_menu.items():
         if clave != '0':
             print(f'[{clave}] {valor} {tipo_dato}')

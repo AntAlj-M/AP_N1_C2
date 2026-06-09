@@ -1,42 +1,51 @@
 from datos import listado_libros
 from prettytable import PrettyTable
+from negocio import procesar_libro,crear_tabla_libros,buscar_libro
+from presentacion.solicitud_datos import solicitar_dato,nuevos_datos_libro
+
 def agregar_libro():
-    titulo = 'Agregar libro'
-    print('Agregar Libro')
-    print('titulo')
-    print('-' * len(titulo))
-    print('Ingrese los datos del libro:')
-    titulo_libro,Isbn,editorial,paginas,categoria = solicitar_datos_libro()
+    titulo = '\nAgregar Libro'
+    print(titulo)
+    print('=' * len(titulo))
+    listar_libros()
+
+    print('\nIngrese los datos del libro:')
+    procesar_libro()
 
 def listar_libros():
     tabla_libros = PrettyTable()
-    tabla_libros.field_names = ['Titulo','ISBN','Editorial','Páginas','Categoria']
 
-    titulo = '\nListado libros'
+    titulo = '\nListado de Libros'
     print(titulo)
-    print('-' * len(titulo))
-    for libro in listado_libros:
-        tabla_libros.add_row([libro['titulo_libro'],libro['Isbn'],libro['editorial'],libro['paginas'],libro['categoria']])
+    print('=' * len(titulo))
+    tabla_libros = crear_tabla_libros()
     print(tabla_libros)
 
 def modificar_libro():
-    titulo = 'Modificar libro'
-    print('Modificar Libro')
-    print('Agregar Libro')
-    print('titulo')
-    print('-' * len(titulo))
+    titulo = '\nModificar Libro'
+    print(titulo)
+    print('=' * len(titulo))
+    titulo_libro = solicitar_dato('Ingrese el título del libro: ')
+    libro = buscar_libro(titulo_libro)
+    print(f'\nDatos del Libro\n{"=" * 15}')
+    print(f'N°: {libro['id']} \nTítulo: {libro['titulo_libro']} \nISBN: {libro['isbn']} \nEditorial: {libro['editorial']} \nCantidad Páginas: {libro['paginas']} \nCategoría: {libro['categoria']}')
+    nuevo_titulo, nuevo_isbn, nuevo_editorial, nuevas_paginas, nueva_categoria = nuevos_datos_libro()
+    
+    if nuevo_titulo != '':
+        libro['titulo_libro'] = nuevo_titulo
+    if nuevo_isbn != '':
+        libro['isbn'] = nuevo_isbn
+    if nuevo_editorial != '':
+        libro['editorial'] = nuevo_editorial
+    if nuevas_paginas != '':
+        libro['paginas'] = nuevas_paginas
+    if nueva_categoria != '':
+        libro['categoria'] = nueva_categoria
+
+    print(f'\nDatos del Libro\n{"=" * 15}')
+    print(f'N°: {libro['id']} \nTítulo: {libro['titulo_libro']} \nISBN: {libro['isbn']} \nEditorial: {libro['editorial']} \nCantidad Páginas: {libro['paginas']} \nCategoría: {libro['categoria']}')
 
 def eliminar_libro():
-    titulo = 'Eliminar_libro'
-    print('Eliminar Libro')
-    print('Agregar Libro')
-    print('titulo')
-    print('-' * len(titulo))
-    
-def solicitar_datos_libro():
-    titulo_libro = input('Titulo: ')
-    Isbn = input('Isbn: ')
-    editorial = input('Editorial: ')
-    paginas = input('cantidad de páginas: ')
-    categoria = input('categoría: ')
-    return titulo_libro,Isbn,editorial,paginas,categoria
+    titulo = '\nEliminar Libro'
+    print(titulo)
+    print('=' * len(titulo))
