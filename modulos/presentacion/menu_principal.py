@@ -1,6 +1,7 @@
 from datos import datos_menu,opciones_validas_menu,datos_sub_menu,mensaje_volver,opciones_validas_sub_menu,mensaje_opcion_incorrecta,titulo_app
 from datos import numero_version
 from presentacion.control_libro import agregar_libro,listar_libros,modificar_libro,eliminar_libro
+from presentacion.control_usuario import agregar_usuario,listar_usuario,modificar_usuario,eliminar_usuario
 
 def menu_principal():
     print(f'\n{titulo_app} v{numero_version}')
@@ -53,15 +54,15 @@ def menu_principal():
         elif opcion_usuario == '3':
             # Gestión Lectores
             while True:
-                opcion_sub_menu = sub_menu('Lector')
+                opcion_sub_menu = sub_menu('Usuario')
                 if opcion_sub_menu == '1':
-                    pass
+                    agregar_usuario()
                 elif opcion_sub_menu == '2':
-                    pass
+                    listar_usuario()
                 elif opcion_sub_menu == '3':
-                    pass
+                    modificar_usuario()
                 elif opcion_sub_menu == '4':
-                    pass
+                    eliminar_usuario()
                 elif opcion_sub_menu == '0':
                     print(mensaje_volver)
                     break
@@ -87,7 +88,7 @@ def menu_principal():
         elif opcion_usuario == '5':
             # Gestión Sistema
             while True:
-                opcion_sub_menu = sub_menu('Usuario')
+                opcion_sub_menu = sub_menu('Sistema')
                 if opcion_sub_menu == '1':
                     pass
                 elif opcion_sub_menu == '2':

@@ -1,0 +1,1 @@
+listado_usuarios = [{'id' : 1,'Nombre' : 'Pepe','Correo' : 'Pepe@gmail.com','Telefono' : '+56 9 5678 9122','Rut' : 15469705-3,'Contraseña' : 'pepemaster'}]
